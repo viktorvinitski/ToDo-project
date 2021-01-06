@@ -6,110 +6,110 @@ const date = `${new Date().toLocaleDateString()} ${new Date()
     .toLocaleTimeString()
     .slice(0, -3)}`;
 let toDoTasks = [
-    {
-        id: idGenerator(),
-        text: 'Вынести мусор',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Убрать в квартире',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Помыть посуду',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Купить продукты',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Выгулять собаку',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Вынести мусор',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Убрать в квартире',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Помыть посуду',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Купить продукты',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Выгулять собаку',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Выгулять собаку',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Вынести мусор',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Убрать в квартире',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Помыть посуду',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Купить продукты',
-        isDone: false,
-        date: '01 января 2020'
-    },
-    {
-        id: idGenerator(),
-        text: 'Выгулять собаку',
-        isDone: false,
-        date: '01 января 2020'
-    }
+    // {
+    //     id: idGenerator(),
+    //     text: 'Вынести мусор',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Убрать в квартире',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Помыть посуду',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Купить продукты',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Выгулять собаку',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Вынести мусор',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Убрать в квартире',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Помыть посуду',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Купить продукты',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Выгулять собаку',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Выгулять собаку',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Вынести мусор',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Убрать в квартире',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Помыть посуду',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Купить продукты',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // },
+    // {
+    //     id: idGenerator(),
+    //     text: 'Выгулять собаку',
+    //     isDone: false,
+    //     date: '01 января 2020'
+    // }
 ]
 
 let doneTasks = [
-    {
-        id: idGenerator(),
-        text: 'Купить хлеб',
-        isDone: true
-    }
+    // {
+    //     id: idGenerator(),
+    //     text: 'Купить хлеб',
+    //     isDone: true
+    // }
 ]
 
 function addNewTask(){
