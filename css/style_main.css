@@ -106,7 +106,7 @@
     align-items: center;
     margin: 0 auto;
     box-sizing: border-box;
-    margin-top: 48px;
+    margin-top: 46px;
 }
 .filters_area input{
     height: 100%;
@@ -373,7 +373,7 @@
         height: 40px; */
         font-size: 30px;
     }
-    .task{
+    /* .task{
         height: 36px;
-    }
+    } */
 }
