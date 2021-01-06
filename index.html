@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datamola test task</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style_auth.css">
+    <link rel="stylesheet" href="./css/style_reg.css">
+    <link rel="stylesheet" href="./css/style_main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="registration" class="registration">
+        <div class="name">Туду</div>
+        <div class="circles">
+            <div class="circle_max">
+                <div class="circle_middle">
+                    <div class="circle_small">
+                        <div class="form_circle">
+                            <form class="form_auth" action="">
+                                <img src="./img/favicon.svg" alt="img">
+                                <a onclick="openAuthorization()" href="#!">Авторизироваться</a>
+                                <input id="regName" type="text" placeholder="Имя пользователя">
+                                <input id="regPassword" type="password" placeholder="Пароль">
+                                <input id="regConfirm" type="password" placeholder="Повторить пароль">
+                                <button onclick="addNewUser()">Зарегистрироваться</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <section id="authorization" class="authorization">
+        <div class="name">Туду</div>
+        <div class="circles">
+            <div class="circle_max">
+                <div class="circle_middle">
+                    <div class="circle_small">
+                        <div class="form_circle">
+                            <form class="form_auth" action="">
+                                <img src="./img/favicon.svg" alt="img">
+                                <a onclick="openRegistration()" href="#!">Регистрация</a>
+                                <input id="authName" type="text" placeholder="Имя пользователя">
+                                <input id="authPassword" type="password" placeholder="Пароль">
+                                <button onclick="authorizeUser()">Войти</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <section id="main" class="main">
+        <header class="main_header">
+            <div class="logo_info">
+                <img src="./img/favicon.svg" alt="logo">
+                <div class="logo_name">Туду</div>
+            </div>
+            <div id="userName" class="user_info">
+                <div class="user_name">Привет, Виктор</div>
+                <button onclick="exitFromTodo()" class="exit_button">Выход</button>
+            </div>
+        </header>
+        <div class="main_content">
+            <div class="tasks_area">
+                <div class="filters">
+                    <div class="filters_area">
+                        <input id="findTask" type="text" placeholder="Поиск задачи...">
+                        <button onclick="findTask()">Найти</button>
+                    </div>
+                    <div class="filters_date">
+                        <div>Фильтр:</div>
+                        <input id="filterDate" type="date" >
+                    </div>
+
+                </div>
+                <div class="tasks">
+                    <div class="tasks_block-name">Мои задачи</div>
+                    <div class="tasks_content">
+                        <div id="toDoContainer" class="tasks_container"></div>
+                    </div>
+                    
+                </div>
+                <div class="done">
+                    <div class="done_block-name">Я сделал</div>
+                    <div class="done_content">
+                        <div id="doneContainer" class="done_container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="new_tasks-area">
+                <div>
+                    <input id="newTaskInput" type="text" placeholder="Введите задачу">
+                    <button onclick="addNewTask()">+</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="author_name">Viktor Vinitski</div>
+        <div class="email">fireworkv0@gmail.com</div>
+    </footer>    
+    
+<script onload="getUsersFromLocalStorage()" src="./js/auth.js"></script>
+    <script src="./js/views.js"></script>
+    <script src="./js/index.js"></script>
+    <script onload="onLogin()" src="./js/store.js"></script>
+</body>
+</html>
