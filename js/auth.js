@@ -38,6 +38,14 @@ const saveLocalStorage = () => {
   localStorage.setItem(USERS_LOCALSTORAGE_KEY, JSON.stringify(userList));
 };
 
+function clearInput(){
+    document.getElementById("regName").value = ''
+    document.getElementById("regPassword").value = ''
+    document.getElementById("regConfirm").value = ''
+    document.getElementById("authName").value = ''
+    document.getElementById("authPassword").value = ''
+}
+
 function addNewUser() {
   const name = document.getElementById("regName").value;
   const password = document.getElementById("regPassword").value;
@@ -50,6 +58,8 @@ function addNewUser() {
         saveLocalStorage();
         changeRegistereUsers()
         openAuthorization();
+        clearInput();
+
     }else{
         onErrorRegistration()
     }
@@ -67,6 +77,7 @@ function authorizeUser(){
         currentLogin = findedLogin.name
         setCurrentUser()
         openToDo()
+        clearInput()
     }
 }
 
