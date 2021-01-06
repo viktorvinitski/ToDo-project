@@ -365,12 +365,12 @@
     .new_tasks-area{
         padding: 5px 10px;
     }
-    .new_tasks-area input{
+    /* .new_tasks-area input{
         height: 40px;
-    }
+    } */
     .new_tasks-area button{
-        min-width: 40px;
-        height: 40px;
+        /* min-width: 40px;
+        height: 40px; */
         font-size: 30px;
     }
     .task{
