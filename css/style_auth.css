@@ -19,7 +19,7 @@ button {
     justify-content: center;
     padding: 140px 20px 140px 20px;
     box-sizing: border-box;
-    /* display: none; */
+    display: flex;
 }
 .name{
     margin-bottom: 150px;

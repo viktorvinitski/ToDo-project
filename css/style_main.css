@@ -3,7 +3,7 @@
     height: 96vh;
     justify-content: center;
     box-sizing: border-box;
-    display: block;
+    display: none;
     position: relative;
 }
 .main_header{
