@@ -13,7 +13,7 @@ button {
 .authorization{
     max-width: 100vw;
     height: 96vh;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;

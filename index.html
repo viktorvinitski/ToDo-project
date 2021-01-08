@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style_auth.css">
     <link rel="stylesheet" href="./css/style_reg.css">
     <link rel="stylesheet" href="./css/style_main.css">
+    <link rel="stylesheet" href="./css/modal.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
@@ -54,13 +55,31 @@
         </div>    
     </section>
     <section id="main" class="main">
+        <div id="editModalArea" class="modal_area">
+            <div class="modal">
+                <textarea name="" id="editModalTextarea" cols="30" rows="10"></textarea>
+                <div class="modal_buttons">
+                    <button onclick="editTask()" id="buttonEdit" class="button_confirm">Подтвердить</button>
+                    <button onclick="closeEditModal()" class="button_close">Закрыть</button>
+                </div>
+            </div>
+        </div>
+        <div id="deleteModalArea" class="delete_modal_area">
+            <div class="delete_modal">
+                <div class="delete_modal_question">Удалить задание?</div>
+                <div class="modal_buttons">
+                    <button onclick="removeTask()" id="buttonEdit" class="button_confirm">Подтвердить</button>
+                    <button onclick="closeDeleteModal()" class="button_close">Закрыть</button>
+                </div>
+            </div>
+        </div>
         <header class="main_header">
             <div class="logo_info">
                 <img src="./img/favicon.svg" alt="logo">
                 <div class="logo_name">Туду</div>
             </div>
             <div id="userName" class="user_info">
-                <div class="user_name">Привет, Виктор</div>
+                <div class="user_name">Привет</div>
                 <button onclick="exitFromTodo()" class="exit_button">Выход</button>
             </div>
         </header>
@@ -104,7 +123,8 @@
         <div class="email">fireworkv0@gmail.com</div>
     </footer>    
     
-<script onload="getUsersFromLocalStorage()" src="./js/auth.js"></script>
+    <script src="./js/modal.js"></script>
+    <script onload="getUsersFromLocalStorage()" src="./js/auth.js"></script>
     <script src="./js/views.js"></script>
     <script src="./js/index.js"></script>
     <script onload="onLogin()" src="./js/store.js"></script>

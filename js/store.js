@@ -112,12 +112,16 @@ let doneTasks = [
     // }
 ]
 
+let editId
+let editText
+
+
 function addNewTask(){
     const text = document.getElementById('newTaskInput').value
     const newTask = {
         id: idGenerator(),
         text,
-        isDone:false,
+        isDone: false,
         date: date
     }
     if(text){
@@ -126,26 +130,47 @@ function addNewTask(){
     tasks.display()
     document.getElementById('newTaskInput').value = ''
 }
-function removeTask(id){
-    let index = toDoTasks.findIndex((item) => item.id === id);
+
+
+function openDeleteModal(id){
+    document.getElementById('deleteModalArea').style.display = 'flex'
+    editId = id
+}
+function removeTask(){
+    let index = toDoTasks.findIndex((item) => item.id === editId);
     if (index === -1) {
       return false;
     }
     toDoTasks.splice(index, 1);
     tasks.display()
+    closeDeleteModal()
 }
-function editTask(id, text){
-    let index = toDoTasks.findIndex((item) => item.id === id);
+
+
+function openEditModal(id, text){
+    document.getElementById('editModalArea').style.display = 'flex'
+    editId = id
+    editText = text
+}
+function editTask(){
+    let index = toDoTasks.findIndex((item) => item.id === editId);
     if (index === -1) {
       return false;
     }
-    const newTask = prompt(text)
-    if(newTask === null){
-        return text
+    const newTask = document.getElementById('editModalTextarea').value
+    if(newTask === ''){
+        closeEditModal()
+        return editText
     }
     toDoTasks[index].text = newTask
     tasks.display()
+    closeEditModal()
+    document.getElementById('editModalTextarea').value = ''
+    editId = null
+    editText = null
 }
+
+
 function onLogin(){
     tasks.display()
     perfomedTasks.display()

@@ -20,10 +20,10 @@ class ToDoTasksView{
                   <div class="task_text">${text}</div>
               </div>
               <div class="task_buttons">
-                  <button onclick="editTask(${id}, '${text}')">
+                  <button onclick="openEditModal(${id}, '${text}')">
                       <img src="./img/edit.png" alt="edit">
                   </button>
-                  <button onclick="removeTask(${id})">
+                  <button onclick="openDeleteModal(${id})">
                       <img src="./img/delete.png" alt="delete">
                   </button>
               </div>
