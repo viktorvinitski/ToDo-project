@@ -22,9 +22,7 @@ function setCurrentUser(){
     ` 
 }
 
-function onErrorRegistration(){
-    console.log('error')
-}
+
 
 const getUsersFromLocalStorage = () => {
     let usersData = JSON.parse(localStorage.getItem(USERS_LOCALSTORAGE_KEY));
@@ -53,18 +51,21 @@ function addNewUser() {
   if (name !== "" && password !== "" && password === confirm) {
     const newUser = { name, password };
     let checkUser = registeredUsers.includes(newUser.name)
+    debugger
+    if(checkUser){
+        onErrorRegistration()
+    }
     if(!checkUser){
         userList.push(newUser);
         saveLocalStorage();
         changeRegistereUsers()
         openAuthorization();
         clearInput();
-
-    }else{
-        onErrorRegistration()
+        removeErrorMessage()
     }
-    
-    
+  }
+  if(password !== confirm){
+      onPasswordErrorRegistration()
   }
 }
 
@@ -73,12 +74,20 @@ function authorizeUser(){
     const password = document.getElementById("authPassword").value;
     let data = JSON.parse(localStorage.getItem(USERS_LOCALSTORAGE_KEY))
     let findedLogin = data.find(item => item.name === name)
+    if(!findedLogin){
+        onLoginError()
+    }
+    if(findedLogin.password !== password){
+        onPasswordError()
+    }
     if(findedLogin.password === password){
         currentLogin = findedLogin.name
         setCurrentUser()
         openToDo()
         clearInput()
+        removeErrorMessage()
     }
+    
 }
 
 

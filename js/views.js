@@ -3,11 +3,12 @@ class ToDoTasksView{
     constructor(containerId) {
         this.containerId = containerId;
       }
-      display() {
+      display(tasks) {
         if (!this.container) {
           this.container = document.getElementById(this.containerId);
         }
-        this.container.innerHTML = toDoTasks
+        this.container.innerHTML = tasks
+          .sort((a,b) => a.date - b.date)
           .map((item) => this.getMessageHTML(item))
           .join("");
       }
@@ -16,7 +17,8 @@ class ToDoTasksView{
           <div class="task_content">
           <div class="task">
               <div class="check">
-                  <input onclick="toDoneTasks(${id})" type="checkbox">
+                  <input id="checkbox" class="checkbox" onclick="toDoneTasks(${id})" type="checkbox">
+                  <label for="checkbox"></label>
                   <div class="task_text">${text}</div>
               </div>
               <div class="task_buttons">
@@ -37,15 +39,16 @@ class DoneTasksView{
     constructor(containerId) {
         this.containerId = containerId;
       }
-      display() {
+      display(tasks) {
         if (!this.container) {
           this.container = document.getElementById(this.containerId);
         }
-        this.container.innerHTML = doneTasks
+        this.container.innerHTML = tasks
+          .sort((a,b) => a.date - b.date)
           .map((item) => this.getMessageHTML(item))
           .join("");
       }
-      getMessageHTML({ id, text, isDone }) {
+      getMessageHTML({ id, text, isDone, date }) {
           return `
             <div class="task">
             <div class="check">
@@ -56,5 +59,5 @@ class DoneTasksView{
          `;
     }
 }
-const tasks = new ToDoTasksView("toDoContainer")
-const perfomedTasks = new DoneTasksView("doneContainer")
+const tasksToDo = new ToDoTasksView("toDoContainer")
+const doneTasksToDo = new DoneTasksView("doneContainer")

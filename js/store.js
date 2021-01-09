@@ -5,60 +5,61 @@ const idGenerator = () => {
 const date = `${new Date().toLocaleDateString()} ${new Date()
     .toLocaleTimeString()
     .slice(0, -3)}`;
+
 let toDoTasks = [
     // {
     //     id: idGenerator(),
     //     text: 'Вынести мусор',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Убрать в квартире',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Помыть посуду',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Купить продукты',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Выгулять собаку',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Вынести мусор',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Убрать в квартире',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Помыть посуду',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: date
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Купить продукты',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: '09.01.2021'
     // },
     // {
     //     id: idGenerator(),
@@ -108,13 +109,13 @@ let doneTasks = [
     // {
     //     id: idGenerator(),
     //     text: 'Купить хлеб',
-    //     isDone: true
+    //     isDone: true,
+    //     date: date
     // }
 ]
 
 let editId
 let editText
-
 
 function addNewTask(){
     const text = document.getElementById('newTaskInput').value
@@ -127,8 +128,11 @@ function addNewTask(){
     if(text){
         toDoTasks.push(newTask)
     }
-    tasks.display()
+    tasksToDo.display(toDoTasks)
     document.getElementById('newTaskInput').value = ''
+    let taskArea = document.getElementById("toDoContainer");
+    taskArea.scrollTop = taskArea.scrollHeight
+    console.log()
 }
 
 
@@ -142,7 +146,7 @@ function removeTask(){
       return false;
     }
     toDoTasks.splice(index, 1);
-    tasks.display()
+    tasksToDo.display(toDoTasks)
     closeDeleteModal()
 }
 
@@ -163,7 +167,7 @@ function editTask(){
         return editText
     }
     toDoTasks[index].text = newTask
-    tasks.display()
+    tasksToDo.display(toDoTasks)
     closeEditModal()
     document.getElementById('editModalTextarea').value = ''
     editId = null
@@ -171,43 +175,67 @@ function editTask(){
 }
 
 
-function onLogin(){
-    tasks.display()
-    perfomedTasks.display()
-}
+
 function toDoneTasks(id){
     let cuttedTask = toDoTasks.find((item) => item.id === id);
     toDoTasks = toDoTasks.filter(item => item.id !== cuttedTask.id);
     cuttedTask.isDone = true
     doneTasks.push(cuttedTask)
-    perfomedTasks.display()
-    tasks.display()
+    doneTasksToDo.display(doneTasks)
+    tasksToDo.display(toDoTasks)
+    let taskArea = document.getElementById("doneContainer");
+    taskArea.scrollTop = taskArea.scrollHeight
 }
 function returnToNotDoneTasks(id){
     let cuttedTask = doneTasks.find((item) => item.id === id);
     doneTasks = doneTasks.filter(item => item.id !== cuttedTask.id);
     cuttedTask.isDone = false
     toDoTasks.push(cuttedTask)
-    perfomedTasks.display()
-    tasks.display()
+    doneTasksToDo.display(doneTasks)
+    tasksToDo.display(toDoTasks)
+    let taskArea = document.getElementById("toDoContainer");
+    taskArea.scrollTop = taskArea.scrollHeight
 }
-function findTask(){
-    const text = document.getElementById('findTask').value
-    if(text !== ""){
-        toDoTasks = toDoTasks.filter(item => item.text.toLowerCase().includes(text.toLowerCase()));
-        doneTasks = doneTasks.filter(item => item.text.toLowerCase().includes(text.toLowerCase()));
-        perfomedTasks.display()
-        tasks.display()
-    }else{
-        perfomedTasks.display()
-        tasks.display() 
+
+
+
+function changeDateFilter(){
+    document.getElementById('filterDate').valueAsDate = new Date()
+}
+changeDateFilter()
+
+
+function activateFilter() {
+    let filterObj = {
+        text: document.getElementById('findTask').value,
+        date: new Date(document.getElementById('filterDate').value).toLocaleDateString() 
+    }
+    
+    console.log(filterObj.text)
+    console.log(filterObj.date)
+    
+    let resultToDo = toDoTasks
+    let resultDone = doneTasks
+
+    if (filterObj.text && filterObj.text !== '') {
+        resultToDo = resultToDo.filter(item => item.text.toLowerCase().includes(filterObj.text.toLowerCase()));
+        resultDone = resultDone.filter(item => item.text.toLowerCase().includes(filterObj.text.toLowerCase()));
+        tasksToDo.display(resultToDo)
+        doneTasksToDo.display(resultDone)
+    }
+    if (filterObj.date) {
+        resultToDo = resultToDo.filter(item => item.date === filterObj.date)
+        resultDone = resultDone.filter(item => item.date === filterObj.date)
+        tasksToDo.display(resultToDo)
+        doneTasksToDo.display(resultDone)
+    }
+    else{
+        doneTasksToDo.display(doneTasks)
+        tasksToDo.display(toDoTasks)
     }
 }
 
-
-document.getElementById("filterDate").addEventListener("change", function() {
-    let input = this.value;
-    let dateEntered = new Date(input);
-    console.log(input);
-    console.log(dateEntered);
-});
+function onLogin(){
+    tasksToDo.display(toDoTasks)
+    doneTasksToDo.display(doneTasks)
+}

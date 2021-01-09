@@ -1,8 +1,7 @@
 .modal_area{
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: .6;
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     display: none;
     align-items: center;
@@ -49,18 +48,18 @@
     transition: .3s;
 }
 .button_confirm{
-    background-color: green;
+    background-color: rgb(75, 129, 75);
 }
 .button_close{
     margin-left: 10px;
-    background-color: rgb(245, 51, 17);
+    background-color: rgb(211, 66, 40);
 }
 
 .delete_modal_area{
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: .6;
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     display: none;
     align-items: center;

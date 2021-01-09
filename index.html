@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style_reg.css">
     <link rel="stylesheet" href="./css/style_main.css">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/error.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +21,7 @@
                 <div class="circle_middle">
                     <div class="circle_small">
                         <div class="form_circle">
-                            <form class="form_auth" action="">
+                            <form id="formReg" class="form_auth" action="">
                                 <img src="./img/favicon.svg" alt="img">
                                 <a onclick="openAuthorization()" href="#!">Авторизироваться</a>
                                 <input id="regName" type="text" placeholder="Имя пользователя">
@@ -41,7 +42,7 @@
                 <div class="circle_middle">
                     <div class="circle_small">
                         <div class="form_circle">
-                            <form class="form_auth" action="">
+                            <form id="formAuth" class="form_auth" action="">
                                 <img src="./img/favicon.svg" alt="img">
                                 <a onclick="openRegistration()" href="#!">Регистрация</a>
                                 <input id="authName" type="text" placeholder="Имя пользователя">
@@ -88,11 +89,11 @@
                 <div class="filters">
                     <div class="filters_area">
                         <input id="findTask" type="text" placeholder="Поиск задачи...">
-                        <button onclick="findTask()">Найти</button>
+                        <button onclick="activateFilter()">Найти</button>
                     </div>
                     <div class="filters_date">
                         <div>Фильтр:</div>
-                        <input id="filterDate" type="date" >
+                        <input oninput="activateFilter()" id="filterDate" type="date" >
                     </div>
 
                 </div>
@@ -123,6 +124,7 @@
         <div class="email">fireworkv0@gmail.com</div>
     </footer>    
     
+    <script src="./js/error.js"></script>
     <script src="./js/modal.js"></script>
     <script onload="getUsersFromLocalStorage()" src="./js/auth.js"></script>
     <script src="./js/views.js"></script>
