@@ -179,10 +179,10 @@ function returnToNotDoneTasks(id){
 
 
 
-// function changeDateFilter(){
-//     document.getElementById('filterDate').valueAsDate = new Date()
-// }
-// changeDateFilter()
+function changeDateFilter(){
+    document.getElementById('filterDate').valueAsDate = new Date()
+}
+changeDateFilter()
 
 
 function isSameDate(d1,d2) {
@@ -194,14 +194,12 @@ function activateFilter() {
         text: document.getElementById('findTask').value,
         date: new Date(document.getElementById('filterDate').value)
     }
-    
     // console.log(filterObj.text)
     // console.log(filterObj.date)
-    
     let resultToDo = toDoTasks
     let resultDone = doneTasks
 
-    if (filterObj.text && filterObj.text !== '') {
+    if (filterObj.text) {
         resultToDo = resultToDo.filter(item => item.text.toLowerCase().includes(filterObj.text.toLowerCase()));
         resultDone = resultDone.filter(item => item.text.toLowerCase().includes(filterObj.text.toLowerCase()));
         tasksToDo.display(resultToDo)
