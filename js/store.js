@@ -2,70 +2,51 @@
 const idGenerator = () => {
     return Math.random()
 }
-const date = `${new Date().toLocaleDateString()} ${new Date()
-    .toLocaleTimeString()
-    .slice(0, -3)}`;
 
 let toDoTasks = [
     // {
     //     id: idGenerator(),
-    //     text: 'Вынести мусор',
-    //     isDone: false,
-    //     date: date
-    // },
-    // {
-    //     id: idGenerator(),
-    //     text: 'Убрать в квартире',
-    //     isDone: false,
-    //     date: date
-    // },
-    // {
-    //     id: idGenerator(),
-    //     text: 'Помыть посуду',
-    //     isDone: false,
-    //     date: date
-    // },
-    // {
-    //     id: idGenerator(),
     //     text: 'Купить продукты',
     //     isDone: false,
-    //     date: date
+    //     date: new Date()
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Выгулять собаку',
     //     isDone: false,
-    //     date: date
+    //     date: new Date('Sun Jan 09 2021 20:02:07 GMT+0300')
+
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Вынести мусор',
     //     isDone: false,
-    //     date: date
+    //     date: new Date('Sun Jan 08 2021 20:02:07 GMT+0300')
+
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Убрать в квартире',
     //     isDone: false,
-    //     date: date
+    //     date: new Date('Sun Jan 08 2021 20:02:07 GMT+0300')
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Помыть посуду',
     //     isDone: false,
-    //     date: date
+    //     date: new Date('Sun Jan 08 2021 20:02:07 GMT+0300')
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Купить продукты',
     //     isDone: false,
-    //     date: '09.01.2021'
+    //     date: new Date('Sun Jan 08 2021 20:02:07 GMT+0300')
     // },
     // {
     //     id: idGenerator(),
     //     text: 'Выгулять собаку',
     //     isDone: false,
-    //     date: '01 января 2020'
+    //     date: new Date('Sun Jan 08 2021 20:02:07 GMT+0300')
     // },
     // {
     //     id: idGenerator(),
@@ -123,7 +104,7 @@ function addNewTask(){
         id: idGenerator(),
         text,
         isDone: false,
-        date: date
+        date: new Date()
     }
     if(text){
         toDoTasks.push(newTask)
@@ -132,7 +113,6 @@ function addNewTask(){
     document.getElementById('newTaskInput').value = ''
     let taskArea = document.getElementById("toDoContainer");
     taskArea.scrollTop = taskArea.scrollHeight
-    console.log()
 }
 
 
@@ -199,20 +179,24 @@ function returnToNotDoneTasks(id){
 
 
 
-function changeDateFilter(){
-    document.getElementById('filterDate').valueAsDate = new Date()
-}
-changeDateFilter()
+// function changeDateFilter(){
+//     document.getElementById('filterDate').valueAsDate = new Date()
+// }
+// changeDateFilter()
 
+
+function isSameDate(d1,d2) {
+    return d1.getDate() === d2.getDate() && d1.getMonth() === d2.getMonth() && d1.getFullYear() === d2.getFullYear()
+}
 
 function activateFilter() {
     let filterObj = {
         text: document.getElementById('findTask').value,
-        date: new Date(document.getElementById('filterDate').value).toLocaleDateString() 
+        date: new Date(document.getElementById('filterDate').value)
     }
     
-    console.log(filterObj.text)
-    console.log(filterObj.date)
+    // console.log(filterObj.text)
+    // console.log(filterObj.date)
     
     let resultToDo = toDoTasks
     let resultDone = doneTasks
@@ -224,8 +208,8 @@ function activateFilter() {
         doneTasksToDo.display(resultDone)
     }
     if (filterObj.date) {
-        resultToDo = resultToDo.filter(item => item.date === filterObj.date)
-        resultDone = resultDone.filter(item => item.date === filterObj.date)
+        resultToDo = resultToDo.filter(item => isSameDate(item.date, filterObj.date))
+        resultDone = resultDone.filter(item => isSameDate(item.date, filterObj.date))
         tasksToDo.display(resultToDo)
         doneTasksToDo.display(resultDone)
     }

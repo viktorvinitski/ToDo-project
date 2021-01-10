@@ -1,4 +1,9 @@
 "use strict"
+
+function formatDate(date) {
+    return `${(date.getDate() + '').padStart(2,'0')}.${(date.getMonth() + 1 + '').padStart(2,'0')}.${date.getFullYear()}`
+}
+
 class ToDoTasksView{
     constructor(containerId) {
         this.containerId = containerId;
@@ -30,7 +35,7 @@ class ToDoTasksView{
                   </button>
               </div>
           </div>
-          <div class="task_date">${date}</div>
+          <div class="task_date">${formatDate(date)}</div>
       </div>
          `;
     }
