@@ -51,7 +51,6 @@ function addNewUser() {
   if (name !== "" && password !== "" && password === confirm) {
     const newUser = { name, password };
     let checkUser = registeredUsers.includes(newUser.name)
-    debugger
     if(checkUser){
         onErrorRegistration()
     }
